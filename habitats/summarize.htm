@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<head>
+<title>Survive! Tracking Your Hunt</title>
+<META NAME=AUTHOR CONTENT="Ryan Fischer">
+<SCRIPT TYPE="text/javascript">
+<!--
+function add(f){
+for(var i=0; i<f.elements.length-2; i++){
+ temp=f.elements[i].value;
+ if(isNaN(temp) || temp=="") f.elements[i].value=0;
+ }
+var kgs=0;
+for(var i=0; i<3; i++) kgs+=parseInt(f.elements[i].value);
+f.o_kgs.value=kgs;
+added=true;
+}
+
+var r=1, ENOUGH=445, ERROR_MARGIN=15, added=false, results;
+function compare(n){
+if(n < ENOUGH - ERROR_MARGIN) return 'No, you did not eat enough to survive your first months in Kaziranga. You simply did not eat enough. Why is it <a href="c7.htm" target="_top">so hard to survive?</a>';
+else if(n > ENOUGH + ERROR_MARGIN) return 'Yes, you did eat enough food to survive your first months in Kaziranga. But park rangers are still trying to add more land to Kaziranga. <a href="c7.htm" target="_top">Why?</a>';
+else return 'You ate barely enough food to survive your first months in Kaziranga. Why is it <a href="c7.htm" target="_top">so hard to survive?</a>.';
+}
+
+function graph(n){
+// results=window.open('','results','width=450,height=300,top=100,left=200');
+with(parent.frames[0]){
+document.clear(); document.open();
+document.write('<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><TITLE>Survive! A Tiger Adventure</TITLE></head>');
+document.write('<body bgcolor="#99CC66" text="#003300" link="#003366"  vlink="#006600" background="images/background.gif">');
+document.write('<table border="0" width="500" cellspacing="3"> ');
+
+document.write('<tr><td width="30"><img src="images/dot.gif" width="30" height="1" alt="--"></td>');
+document.write('<td width="320" align="left" valign="top"> ');
+document.write('<div align="center"><img src="images/survive.jpg" width="394" height="101" align="middle"><br></div></td></tr>');
+
+document.write('<tr><td width="30">&nbsp;</td>');
+document.write('<td><br><font face="Verdana, Arial, Helvetica, sans-serif">You ate: ' + n.fontcolor('red') + ' <br> <IMG SRC="images/bar1.gif" WIDTH=' + (r * n) + ' HEIGHT=8><br>');
+document.write('You needed: <font color="#003366">450</font><br></font><IMG SRC="images/bar.gif" ALT="bar" WIDTH="450" HEIGHT="8"></td></tr>');
+
+document.write('<tr><td width="30">&nbsp;</td>');
+document.write('<td><font size="+1" face="Verdana, Arial, Helvetica, sans-serif">');
+document.write('<P>' + compare(n) + '</P>');
+document.write('</p></font>  </td></tr></table>');
+
+document.write('</html></BODY>'); document.close(); added=false;
+}
+}
+
+function check(x){ if(added) graph(x); else alert("Gotta add the totals first!"); }//-->
+</SCRIPT>
+</head>
+<BODY  bgcolor="#006600" text="#CCFFCC" link="#003366">
+
+<FORM>
+<table border="0" cellspacing="4">
+<tr><td width="30"><img src="images/dot.gif" width="30" height="1" alt="--"></td>
+<td align="left" valign="top" colspan="2">
+
+<TABLE BORDER=0 WIDTH="95%"><TR><TD align=center VALIGN=TOP><b><font face="Verdana, Arial, Helvetica, sans-serif">Hunting Scorecoard<br></font></b></TD><tr>
+
+<TD><div align="center">
+<table border="1" cellspacing="0" cellpadding="0">
+<tr align="center" valign="top">
+<td width="90">&nbsp;</td>
+<td width="90"><font face="Verdana, Arial, Helvetica, sans-serif"><b>First Month</b></font></td>
+<td width="90"><font face="Verdana, Arial, Helvetica, sans-serif"><b>Second Month</b></font></td>
+<td width="90"><font face="Verdana, Arial, Helvetica, sans-serif"><b>Third Month</b></font></td>
+<td width="90"><font face="Verdana, Arial, Helvetica, sans-serif"><b>Total</b></font></td>
+</tr>
+
+<tr valign="top" align="center"> 
+<td width="90" valign="middle" align="left"><font face="Verdana, Arial, Helvetica, sans-serif"><b>Kilograms</b></font></td>
+<td NOWRAP width="90"> <input type=TEXT size=6 name="TEXT"> + </td>
+<td NOWRAP width="90"> <input type=TEXT size=6 name="TEXT2"> + </td>
+<td NOWRAP width="90"> <input type=TEXT size=6 name="TEXT3"> = </td>
+<td width="90"> <input disabled readonly type=TEXT size=8 name="o_kgs"></td></tr>
+
+<tr><td colspan=5 align="center"><input type=BUTTON onClick="add(this.form)" value="Add 'em up!" name="BUTTON">
+<input type=BUTTON onClick="check(this.form.o_kgs.value)" value="Graph!" name="BUTTON"></th></tr></table></div></FORM></td></tr></table></TD></TR></TABLE>
+</BODY>
+</html>

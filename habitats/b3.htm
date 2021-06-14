@@ -1,0 +1,110 @@
+<html>
+<head>
+<title>Survive! A Tiger Adventure</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <script language="JavaScript">
+function MM_openBrWindow(theURL,winName,features) { //v1.0
+  window.open(theURL,winName,features);
+}
+</script>
+</head>
+
+<body bgcolor="#99CC66" text="#003300" link="#003366" background="images/background.gif">
+<div align="left"> <table border="0" width="500" cellspacing="4"> <tr> <td valign="top" align="center"><img src="images/dot.gif" width="30" height="1" alt="--"></td><td valign="top" colspan="4"> 
+<p align="center"><img src="images/survive.jpg" width="394" height="101"></p><FORM NAME="chart"> 
+<P align="left"><font size="+1" face="Verdana, Arial, Helvetica, sans-serif">In 
+your first month in Udaipur, you made: <br> <INPUT TYPE=TEXT NAME="tries" SIZE=3> 
+attempts to kill an animal. <INPUT TYPE=TEXT NAME="fails" SIZE=3> attempts failed, 
+but you did kill and eat:</font></p><table border="0" width="90%" cellspacing="0" cellpadding="0"> 
+<tr> <td width="54%" height="40"><img src="images/deer_s.gif" width="48" height="34" alt="Deer" align="absmiddle"> 
+<INPUT TYPE=TEXT NAME="deer" SIZE=3> <font size="+1" face="Verdana, Arial, Helvetica, sans-serif">deer</font></td><td width="46%" height="40"> 
+<font size="+1" face="Verdana, Arial, Helvetica, sans-serif">( <INPUT TYPE=TEXT NAME="deerWT" SIZE=3> 
+kilograms of meat)</font><br></td></tr> <tr> <td width="54%"> <img src="images/boar_s.gif" width="44" height="30" alt="Boar" align="absmiddle"> 
+<INPUT TYPE=TEXT NAME="pig" SIZE=3> <font size="+1" face="Verdana, Arial, Helvetica, sans-serif">wild 
+pig </font></td><td width="46%"><font size="+1" face="Verdana, Arial, Helvetica, sans-serif">( 
+<INPUT TYPE=TEXT NAME="pigWT" SIZE=3> kilograms of meat) </font><br></td></tr> 
+<tr> <td width="54%"> <IMG SRC="images/cow2.jpg" ALT="Cow" WIDTH="52" HEIGHT="40"> 
+<INPUT TYPE=TEXT NAME="other" SIZE=3> <font size="+1" face="Verdana, Arial, Helvetica, sans-serif"><A HREF="cow.htm">cows</A> 
+</font></td><td width="46%"> <font size="+1" face="Verdana, Arial, Helvetica, sans-serif">( 
+<INPUT TYPE=TEXT NAME="otherWT" SIZE=3>kilograms of meat)</font> </td></tr> <td width="54%"><font size="+1" face="Verdana, Arial, Helvetica, sans-serif">So 
+you ate a total of:</font></td><td width="46%"> &nbsp;&nbsp;&nbsp;<INPUT TYPE=TEXT NAME="killsWT" SIZE=3> 
+<font size="+1" face="Verdana, Arial, Helvetica, sans-serif">kilograms of meat 
+this month!</font></td></tr> </table><P align="left"><font size="+1" face="Verdana, Arial, Helvetica, sans-serif">You 
+need 150 kilograms of meat per month to survive, so you did eat enough.</font></p><p align="left"><font size="+1" face="Verdana, Arial, Helvetica, sans-serif"><img src="images/zootiger.jpg" width="228" height="155" alt="Captured and put in a zoo!" align="right" hspace="6" vspace="6">But 
+you also frightened many people in the city. Some people were so frightened that 
+they tried to hunt you down and shoot you. Fortunately, the police found you first. 
+They put you in the city zoo, where you'll be well-fed and protected.</font></p><font size="+1" face="Verdana, Arial, Helvetica, sans-serif">Do 
+you want to try <A HREF="a1.htm#map">another habitat?</A></font><p></p><SCRIPT TYPE="text/javascript">
+<!--
+function rnd(LO, HI){
+temp=LO-1;
+while(temp<LO) temp=Math.round(Math.random()*HI);
+return temp;
+}
+
+var temp, clicked=false, demo=true, pig=new Array(), deer=new Array(), other=new Array();
+var kills=new Array(), tries=new Array(), fails=new Array();
+
+// ---------- Weight of animals (left is lower bound; right is upper) -------------
+var pigWT=rnd(22, 40), deerWT=rnd(22, 80), otherWT=rnd(40, 90);
+// --------------------------------------------------------------------------------
+
+var month=new Array("zeroth", "first", "second", "third"), count=0; killsWT=0;
+var BUTTON='<FORM><INPUT TYPE=BUTTON VALUE="Close" ONCLICK="self.close()"></FORM>';
+
+function init(){
+for(var i=0; i<4; i++){
+ pig[i]=0; deer[i]=0; other[i]=0;
+ kills[i]=0; tries[i]=0; fails[i]=0;
+ }
+}
+
+function hunt(){
+count++; if(count>3) return alert("Hunt is over!");
+if(!demo && clicked) return alert('Already clicked!');
+
+// -----------------------------------------------------------------------
+// ------ Number of animals (left is lower bound; right is upper) --------
+pig[count]=rnd(0, 1); deer[count]=rnd(0, 0); other[count]=rnd(3, 5);
+// -----------------------------------------------------------------------
+
+document.chart.pig.value=pig[count];  document.chart.pigWT.value=pig[count] * pigWT;
+document.chart.deer.value=deer[count]; document.chart.deerWT.value=deer[count] * deerWT;
+document.chart.other.value=other[count]; document.chart.otherWT.value=other[count] * otherWT;
+kills[count]=pig[count] + deer[count] + other[count]; killsWT = pigWT*pig[count] + 
+deerWT*deer[count] + otherWT*other[count]; document.chart.killsWT.value = killsWT;
+
+// ---------------------------------------------------------------------------------------
+// --------- In the line below, "rnd(15, 22)" is the misses. -----------------------------
+// --------- 10 and 20 are the lower and upper bounds.  Change them as necessary ---------
+tries[count]=kills[count] + rnd(8, 13); document.chart.tries.value=tries[count];
+// ---------------------------------------------------------------------------------------
+
+fails[count]=tries[count] - kills[count]; document.chart.fails.value=fails[count];
+return null;
+}
+
+function getData(mes){
+if(count<mes || mes==0) return alert("Can't do this month yet!");
+data=open('', 'data', 'width=500,height=300');
+data.document.clear();
+data.document.open();
+title='Data - Month ' + mes;
+data.document.write('<TITLE>' + title + '</TITLE><H1>' + title + '</H1>');
+data.document.write('<P>In month ' + mes + ' at Kaziranga, you made ' + tries[mes] + ' attempts to kill an animal. ' + fails[mes] + ' attempts failed, but you did kill and eat:</p><p>' + deer[mes] + ' deer (' + deerWT + '  kilograms of meat)<br>' + pig[mes] + ' wild pigs (' + pigWT + ' kilograms of meat)<br>' + other[mes] + ' other animals (' + otherWT + ' kilograms of meat)</p><p>So you ate ' + killsWT + ' kilograms of meat this month! Remember, you need 150 kilograms of meat per month to survive!</p>');
+data.document.write(BUTTON);
+data.document.close();
+if(data.focus()) data.focus();
+return null;
+}
+
+function summarize(){ return alert("Summarize."); }
+
+hunt();
+//-->
+</SCRIPT> </FORM><p align="left"> <p align="left"> <p align="left"> <p align="left"> 
+<p align="left"><font face="Arial, Helvetica, sans-serif" size="-1"><a href="a1.htm">Back 
+to the beginning</a><br>Copyright 1998 <A HREF="../../index.html">Tiger Information 
+Center</A><br> http://www.5tigers.org </font></p></td></tr> </table><p>&nbsp;</p></div><p align="left">&nbsp;</p>
+</body>
+</html>
